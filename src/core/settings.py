@@ -1,19 +1,19 @@
 from pydantic_settings import BaseSettings
-from typing import Optional
 from pydantic import Field
-from functools import lru_cache
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+ENV_PATH = BASE_DIR / ".env"
 
 class Settings(BaseSettings):
+    azure_deployment: str = Field(..., alias="AZURE_DEPLOYMENT")
+    azure_api_version: str = Field(..., alias="AZURE_API_VERSION")
+    azure_api_key: str = Field(..., alias="AZURE_API_KEY")
+    azure_endpoint: str = Field(..., alias="AZURE_ENDPOINT")
 
-    app_name: Optional[str] = Field(None, alias="APP_NAME")
+    class Config:
+        env_file = ENV_PATH
+        env_file_encoding = "utf-8"
+        populate_by_name = True
 
-    azure_api_key: Optional[str] = Field(None, alias="AZURE_API_KEY")
-    azure_endpoint: Optional[str] = Field(None, alias="AZURE_ENDPOINT")
-    azure_deployment: Optional[str] = Field(None, alias="AZURE_DEPLOYMENT")
-    azure_api_version: Optional[str] = Field(None, alias="AZURE_API_VERSION")
-
-@lru_cache
-def get_settings():
-    return Settings
-
-settings = get_settings()
+settings = Settings()
