@@ -1,25 +1,57 @@
 initial_state = {
     "entrepreneur": {
-        "name": "SaloTech",
-        "description": "AI automation platform for B2B teams",
-        "target_market": "Mid-market B2B SaaS companies",
-        "revenue_model": "Subscription + usage-based",
-        "current_traction": "Early revenue, 10 paying customers",
-        "investment_needed": 500000.0,
-        "use_of_funds": "Product, sales, and GTM",
-        "stage": "Seed",
-        "valuation_ask": 2_000_000.0,
+        "name": "Alejandro Lopez (VitaCode)",
+        "description": (
+            "Plataforma de salud de precisión (SaaS + Hardware) que utiliza análisis de ADN y Microbiota "
+            "cruzados con Inteligencia Artificial Financiera (Budget AI). Ofrece planes de nutrición y "
+            "entrenamiento hiper-personalizados que se adaptan al presupuesto económico y biología del usuario."
+        ),
+        "target_market": (
+            "Mercado global de $2 Billones. Personas con obesidad/sobrepeso, familias con presupuesto ajustado, "
+            "atletas y biohackers. Foco en democratizar la salud preventiva."
+        ),
+        "revenue_model": (
+            "Híbrido: 1) Venta única de Kit de ADN/Microbiota ($100 USD). "
+            "2) Suscripción Mensual Recurrente (SaaS) con 3 niveles: "
+            "Vita-Start ($9.99), Vita-Flex ($24.99), Vita-Live ($34.99)."
+        ),
+        "current_traction": (
+            "Ventas año anterior (Beta): $180,000 USD. "
+            "Proyección año actual: $850,000 USD. "
+            "Tasa de retención: 88% mensual. LTV: $550 USD."
+        ),
+        "investment_needed": 300000.0,
+        "use_of_funds": (
+            "40% Inventario de kits (economía de escala), "
+            "30% Marketing agresivo (mantener CAC en $35), "
+            "30% Integración de IA con sistemas de salud pública."
+        ),
+        "stage": "Growth / Post-Revenue",
+        "valuation_ask": 3000000.0,
         "equity_offered": 0.10,
-        "monthly_revenue": 15_000.0,
-        "monthly_burn": 10_000.0,
-        "gross_margin": 0.35,
-        "team_size": 4,
-        "founder_experience_score": 0.7,
-        "tech_moat_score": 0.6,
-        "competition_intensity_score": 0.4,
-        "regulatory_risk_score": 0.2,
+        "monthly_revenue": 70833.0,
+        "monthly_burn": 45000.0,
+        "gross_margin": 0.75,
+        "team_size": 8,
+        "founder_experience_score": 0.85,
+        "tech_moat_score": 0.90,
+        "competition_intensity_score": 0.95,
+        "regulatory_risk_score": 0.60,
         "negotiations": [],
         "concessions_history": [],
+        "exit_strategy": (
+            "Adquisición por grandes farmacéuticas, aseguradoras de salud o gigantes tecnológicos "
+            "(Apple Health / Google Verily)."
+        ),
+        "growth_strategy": (
+            "Estrategia PLG (Product-Led Growth) mediante el 'Family Plan' para lock-in. "
+            "Reducción de barrera de entrada con 'Budget AI' para captar mercado masivo."
+        ),
+        "use_of_funds_breakdown": {
+            "Inventory & Logistics": 120000.0,
+            "Marketing & CAC": 90000.0,
+            "R&D & Tech Integration": 90000.0
+        },
     },
     "judges": [
         {

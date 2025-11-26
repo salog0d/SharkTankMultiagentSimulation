@@ -20,26 +20,17 @@ class LLM:
             max_tokens=2048,
         )
 
-    """
-        @staticmethod
+    
+    @staticmethod
     async def generate(prompt: str) -> str:
 
         llm = LLM.instance()
         resp = await llm.ainvoke(prompt)
 
-        # langchain-openai returns an AIMessage
         if hasattr(resp, "content") and resp.content:
             return resp.content
 
-        # fallback
         return str(resp)
-    """
-
-
-
-
-    @staticmethod
-    async def generate(prompt: str) -> str:
-        return "[SIMULATED RESPONSE]"
+    
 
 

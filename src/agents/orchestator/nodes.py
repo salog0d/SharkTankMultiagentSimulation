@@ -2,6 +2,72 @@ from typing import Dict, Any, List
 
 from src.agents.common.llm import LLM
 from src.agents.orchestator.prompts import ROUND_SUMMARY_PROMPT
+import json
+from typing import Dict, Any, List
+from src.agents.common.llm import LLM
+from src.agents.judge.prompts import JUDGE_DIALOGUE_PROMPT
+from src.agents.entrepreneur.prompts import ENTREPRENEUR_DIALOGUE_PROMPT
+
+async def dialogue_round(state: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Simula un diálogo back-and-forth entre los jueces y el emprendedor.
+    Cada juez hace un comentario basado en el historial reciente,
+    y luego el emprendedor responde a todos.
+    """
+    ent = state["entrepreneur"]
+    judges = state["judges"]
+    history = list(state.get("conversation_history", []))
+    logs = list(state.get("event_log", []))
+
+    # === JUECES HABLAN ===
+    for j in judges:
+        prompt = JUDGE_DIALOGUE_PROMPT.format(
+            judge_name=j["name"],
+            entrepreneur_json=json.dumps(ent, ensure_ascii=False),
+            judge_json=json.dumps(j, ensure_ascii=False),
+            conversation_history=json.dumps(history[-6:], ensure_ascii=False),
+        )
+
+        response = await LLM.generate(prompt)
+
+        # Guardar en logs y conversación
+        logs.append({
+            "event": "dialogue_turn",
+            "role": "judge",
+            "speaker": j["name"],
+            "text": response,
+        })
+        history.append({
+            "role": "judge",
+            "speaker": j["name"],
+            "text": response,
+        })
+
+    # === EMPRENDEDOR RESPONDE ===
+    prompt = ENTREPRENEUR_DIALOGUE_PROMPT.format(
+        entrepreneur_name=ent["name"],
+        entrepreneur_json=json.dumps(ent, ensure_ascii=False),
+        conversation_history=json.dumps(history[-6:], ensure_ascii=False),
+    )
+
+    ent_response = await LLM.generate(prompt)
+
+    logs.append({
+        "event": "dialogue_turn",
+        "role": "entrepreneur",
+        "speaker": ent["name"],
+        "text": ent_response,
+    })
+    history.append({
+        "role": "entrepreneur",
+        "speaker": ent["name"],
+        "text": ent_response,
+    })
+
+    return {
+        "conversation_history": history,
+        "event_log": logs,
+    }
 
 
 def _append_log(state: Dict[str, Any], entry: Dict[str, Any]) -> List[Dict[str, Any]]:

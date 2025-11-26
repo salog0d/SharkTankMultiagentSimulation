@@ -1,4 +1,4 @@
-from typing import TypedDict, List, Dict, Tuple
+from typing import TypedDict, List, Dict, Tuple, Any
 from src.agents.common.phases import PHASES
 from src.agents.common.types import AnswerQualityLogEntry, ErrorEntry
 
@@ -39,6 +39,7 @@ class EntrepreneurState(TypedDict, total=False):
 
     # Narrative
     narrative_pitch: str
+    inner_narratives: List[Dict[str, Any]]  # <- NUEVO
 
     # Verdict
     verdict_expanded: Tuple[bool, str]

@@ -1,5 +1,4 @@
-from typing import TypedDict, List, Tuple
-
+from typing import TypedDict, List, Tuple, Dict, Any
 from src.agents.common.phases import PHASES
 from src.agents.common.types import Offer, ErrorEntry
 
@@ -37,6 +36,7 @@ class JudgeState(TypedDict, total=False):
     # Narrative
     narrative_evaluations: List[str]
     offer_rationales: List[str]
+    inner_narratives: List[Dict[str, Any]]  # <- NUEVO
 
     # Verdict
     verdict_expanded: Tuple[bool, str]
