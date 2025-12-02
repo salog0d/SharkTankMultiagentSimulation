@@ -379,7 +379,7 @@ Este proyecto no especifica licencia. Para uso comercial o redistribución, cont
 
 ## Créditos
 
-**Autor**: No especificado en el repositorio.
+**Autor**: Salog0d
 
 **Tecnologías de terceros:**
 - LangChain/LangGraph por Harrison Chase y equipo
